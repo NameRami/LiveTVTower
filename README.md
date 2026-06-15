@@ -11,6 +11,7 @@ A free, open-source multi-stream TV wall. No app, no subscription, no install �
 [![Channels](https://img.shields.io/badge/Channels-800%2B-red?style=for-the-badge)]()
 
 ![Live TV Tower — 2×2 grid](screenshot1.png)
+
 ![Live TV Tower — country picker](screenshot2.png)
 
 ---
