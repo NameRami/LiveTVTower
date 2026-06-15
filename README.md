@@ -2,7 +2,7 @@
 
 **Watch up to 9 live streams simultaneously. 800+ channels. One HTML file.**
 
-A free, open-source multi-stream TV wall powered by the [iptv-org](https://github.com/iptv-org/iptv) community catalogue. No app, no subscription, no install — open the file and start watching.
+A free, open-source multi-stream TV wall. No app, no subscription, no install — open the file and start watching.
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-LiveTVTower-4f8fff?style=for-the-badge&logo=github)](https://NameRami.github.io/LiveTVTower/LiveTVTower.html)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
@@ -43,12 +43,11 @@ Watch multiple live channels at once in a flexible grid layout:
 
 ### 📡 800+ Channel Catalogue
 
-- Powered by the [iptv-org](https://github.com/iptv-org/iptv) open-source community playlist
 - Channels from **100+ countries** across every continent
 - Filter by **category** — News, Sports, Entertainment, Kids, Music, and more
 - **🌍 Country picker** — full overlay with flag grid, search by country name, instantly filters the channel list
-- **Channel logos** loaded from the iptv-org catalogue for most channels
-- **HLS streaming** via hls.js with automatic URL fallback if a stream goes offline
+- **Channel logos** for most channels
+- **HLS streaming** with automatic URL fallback if a stream goes offline
 - **Per-slot status** — `● LIVE`, `… loading`, `✕ offline`
 
 ### ⭐ Pinned Favourites
@@ -111,7 +110,7 @@ Click **＋ M3U** in the top bar:
 - **Single stream** — paste any `.m3u8` URL with a custom name
 - **M3U playlist** — paste a playlist URL to import multiple channels at once, with names, logos, and country flags parsed automatically
 
-Custom channels appear in a **Custom** section at the top of the picker and persist in your session.
+Custom channels appear in a **Custom** section at the top of the picker.
 
 ---
 
@@ -147,18 +146,6 @@ python3 -m http.server 8080
 
 ---
 
-## 📡 Data Sources
-
-| Layer | Source | Details |
-|-------|--------|---------|
-| Channel catalogue | [iptv-org/api](https://iptv-org.github.io/api/channels.json) | Metadata, logos, countries, categories |
-| Stream URLs | [iptv-org/api](https://iptv-org.github.io/api/streams.json) | Live HLS stream URLs per channel |
-| HLS playback | [hls.js](https://github.com/video-dev/hls.js/) | Browser HLS support |
-
-Channel availability depends on third-party stream providers and is not guaranteed. Streams are community-maintained and may go offline at any time.
-
----
-
 ## 🤝 Contributing
 
 The most impactful contributions:
@@ -176,7 +163,6 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a PR.
 | Layer | Technology |
 |-------|-----------|
 | HLS streaming | [hls.js](https://github.com/video-dev/hls.js/) |
-| Channel catalogue | [iptv-org](https://github.com/iptv-org/iptv) |
 | Hosting | Any static host / GitHub Pages |
 
 No frameworks. No bundler. No npm.
@@ -191,7 +177,7 @@ No frameworks. No bundler. No npm.
 
 ## ⚠️ Disclaimer
 
-Live TV Tower does not host, store, or redistribute any video content. All streams are sourced from public community playlists maintained by [iptv-org](https://github.com/iptv-org/iptv). Stream availability is not guaranteed and depends on third-party providers. This tool is intended for personal use.
+Live TV Tower does not host, store, or redistribute any video content. All streams are publicly available — stream availability is not guaranteed and depends on third-party providers. This tool is intended for personal use.
 
 ---
 
