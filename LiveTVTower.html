@@ -157,6 +157,465 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 /* ── UTIL ── */
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 .live-dot{width:5px;height:5px;background:var(--live);border-radius:50%;animation:blink 1.4s infinite;display:inline-block;margin-right:4px}
+
+
+
+/* Mobile-only controls are hidden on desktop. */
+.picker-mobile-head,.picker-backdrop,.mobile-picker-fab{display:none}
+
+/* ──────────────────────────────────────────────
+   MOBILE / SMALL SCREEN IMPROVEMENTS
+   Desktop stays unchanged. On phones, the same
+   screen grid + picker layout becomes vertical.
+   ────────────────────────────────────────────── */
+@media (max-width: 760px){
+  html,body{
+    height:100dvh;
+    min-height:100dvh;
+    overflow:hidden;
+    font-size:12px;
+  }
+
+  body{
+    display:flex;
+    flex-direction:column;
+  }
+
+  /* Topbar becomes two compact rows instead of squeezing everything. */
+  .topbar{
+    height:auto;
+    min-height:46px;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:7px;
+    padding:7px 8px;
+  }
+
+  .logo{
+    flex:1 1 auto;
+    min-width:0;
+    font-size:14px;
+  }
+
+  .logo-sub{
+    display:none;
+  }
+
+  .topbar-right{
+    flex:0 0 auto;
+    gap:4px;
+    overflow-x:auto;
+    max-width:100%;
+    scrollbar-width:none;
+  }
+  .topbar-right::-webkit-scrollbar{display:none}
+
+  .topbar-mid{
+    order:3;
+    flex:1 0 100%;
+    min-width:0;
+    overflow-x:auto;
+    padding-bottom:1px;
+    scrollbar-width:none;
+  }
+  .topbar-mid::-webkit-scrollbar{display:none}
+
+  .layout-btns{
+    flex:0 0 auto;
+  }
+
+  .lbtn,.tbtn,.mute-btn{
+    min-height:32px;
+    padding:0 10px;
+    border-radius:9px;
+    font-size:11px;
+  }
+
+  .ch-count{
+    margin-left:auto;
+    padding-right:2px;
+  }
+
+  /* Keep the same app sections, but stack them vertically on phones. */
+  .app-body{
+    flex:1;
+    height:auto;
+    min-height:0;
+    flex-direction:column;
+  }
+
+  .screens{
+    width:100%;
+    flex:1 1 auto;
+    min-height:0;
+    padding:5px;
+    gap:5px;
+    overflow:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  /* Make multi-screen modes readable instead of tiny. */
+  .screens.s1{
+    grid-template-columns:1fr;
+    grid-template-rows:minmax(220px,1fr);
+  }
+  .screens.s2{
+    grid-template-columns:1fr;
+    grid-template-rows:repeat(2,minmax(180px,1fr));
+  }
+  .screens.s4{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-template-rows:repeat(2,minmax(150px,1fr));
+  }
+  .screens.s6{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-template-rows:repeat(3,minmax(145px,1fr));
+  }
+  .screens.s9{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-template-rows:repeat(5,minmax(135px,1fr));
+  }
+
+  .slot{
+    border-width:1px;
+    border-radius:10px;
+    min-height:0;
+  }
+
+  .slot-hdr{
+    min-height:30px;
+    padding:5px 7px;
+    gap:4px;
+  }
+
+  .slot-logo{
+    width:17px;
+    height:17px;
+  }
+
+  .slot-name{
+    font-size:10px;
+  }
+
+  .slot-st,.slot-sound,.active-badge{
+    font-size:8px;
+  }
+
+  .slot-close,.slot-fs{
+    min-width:24px;
+    min-height:24px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .slot-ph-icon{
+    font-size:24px;
+  }
+
+  .slot-ph-txt{
+    font-size:10px;
+  }
+
+  .slot-ph-hint{
+    display:none;
+  }
+
+  /* Picker becomes a bottom panel; search and filters remain usable. */
+  .picker{
+    width:100%;
+    height:42dvh;
+    max-height:390px;
+    min-height:230px;
+    border-left:0;
+    border-top:1px solid var(--border);
+    border-radius:14px 14px 0 0;
+    box-shadow:0 -12px 36px rgba(0,0,0,.24);
+  }
+
+  .picker-hdr{
+    padding:9px 10px 8px;
+  }
+
+  .picker-search{
+    margin-bottom:8px;
+    padding:8px 10px;
+    border-radius:10px;
+  }
+
+  .picker-search input{
+    font-size:13px;
+  }
+
+  .cats{
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    padding-bottom:2px;
+    scrollbar-width:none;
+  }
+  .cats::-webkit-scrollbar{display:none}
+
+  .cat-btn{
+    flex:0 0 auto;
+    min-height:28px;
+    padding:0 10px;
+    font-size:10px;
+  }
+
+  .picker-list{
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .pick-section{
+    padding:7px 10px 5px;
+    font-size:9px;
+  }
+
+  .pick-item{
+    min-height:50px;
+    padding:8px 10px;
+    gap:10px;
+  }
+
+  .pick-logo,.pick-flag{
+    width:30px;
+    height:30px;
+  }
+
+  .pick-name{
+    font-size:12px;
+  }
+
+  .pick-meta{
+    font-size:10px;
+  }
+
+  /* Modals become phone-friendly sheets/full panels. */
+  .country-overlay,.modal-bg{
+    align-items:flex-end;
+  }
+
+  .country-modal{
+    width:100vw;
+    max-width:none;
+    max-height:88dvh;
+    border-radius:16px 16px 0 0;
+  }
+
+  .country-modal-hdr{
+    padding:14px 14px 10px;
+  }
+
+  .country-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:6px;
+    padding:10px;
+  }
+
+  .country-card{
+    padding:9px 8px;
+  }
+
+  .country-card-name{
+    font-size:11px;
+  }
+
+  .modal{
+    width:100vw;
+    max-width:none;
+    border-radius:16px 16px 0 0;
+    padding:18px 14px calc(18px + env(safe-area-inset-bottom));
+  }
+
+  .modal input,.modal textarea{
+    font-size:13px;
+    padding:10px 11px;
+    border-radius:9px;
+  }
+
+  .btn-cancel,.btn-ok{
+    min-height:36px;
+    padding:0 14px;
+    border-radius:9px;
+    font-size:12px;
+  }
+}
+
+@media (max-width: 430px){
+  .tbtn{
+    max-width:112px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+
+  .screens.s4,
+  .screens.s6,
+  .screens.s9{
+    grid-template-columns:1fr;
+  }
+  .screens.s4{grid-template-rows:repeat(4,minmax(170px,1fr))}
+  .screens.s6{grid-template-rows:repeat(6,minmax(165px,1fr))}
+  .screens.s9{grid-template-rows:repeat(9,minmax(155px,1fr))}
+
+  .picker{
+    height:44dvh;
+  }
+
+  .country-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+
+/* ── MOBILE PICKER AS OVERLAY DRAWER ── */
+@media (max-width: 760px){
+  .app-body{
+    position:relative;
+  }
+
+  .screens{
+    flex:1 1 100%;
+    height:100%;
+    padding-bottom:58px;
+  }
+
+  .picker-backdrop{
+    display:block;
+    position:fixed;
+    inset:0;
+    z-index:145;
+    background:rgba(0,0,0,.58);
+    backdrop-filter:blur(4px);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .18s ease;
+  }
+
+  body.picker-open .picker-backdrop{
+    opacity:1;
+    pointer-events:auto;
+  }
+
+  .picker{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index:160;
+    width:100%;
+    height:min(84dvh,720px);
+    max-height:none;
+    min-height:0;
+    border-left:0;
+    border-top:1px solid var(--border2);
+    border-radius:18px 18px 0 0;
+    box-shadow:0 -24px 70px rgba(0,0,0,.48);
+    transform:translateY(calc(100% + 24px));
+    opacity:.98;
+    pointer-events:none;
+    transition:transform .22s ease;
+  }
+
+  body.picker-open .picker{
+    transform:translateY(0);
+    pointer-events:auto;
+  }
+
+  .picker-mobile-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:12px 12px 8px;
+  }
+
+  .picker-mobile-title{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    min-width:0;
+  }
+
+  .picker-mobile-title strong{
+    font-size:14px;
+    line-height:1.1;
+  }
+
+  .picker-mobile-title span{
+    font-size:10px;
+    color:var(--muted);
+  }
+
+  .picker-close{
+    width:34px;
+    height:34px;
+    border-radius:999px;
+    border:1px solid var(--border2);
+    background:var(--surface2);
+    color:var(--text);
+    cursor:pointer;
+    font-size:15px;
+    flex-shrink:0;
+  }
+
+  .picker-hdr{
+    padding:0 10px 9px;
+  }
+
+  .picker-search{
+    margin-bottom:8px;
+  }
+
+  .picker-list{
+    position:relative;
+    padding-bottom:calc(10px + env(safe-area-inset-bottom));
+  }
+
+  .mobile-picker-fab{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    position:fixed;
+    left:50%;
+    bottom:calc(12px + env(safe-area-inset-bottom));
+    transform:translateX(-50%);
+    z-index:90;
+    min-height:42px;
+    padding:0 16px;
+    border:1px solid var(--border2);
+    border-radius:999px;
+    background:var(--surface);
+    color:var(--text);
+    box-shadow:0 12px 34px rgba(0,0,0,.42);
+    font-size:12px;
+    font-weight:700;
+    cursor:pointer;
+  }
+
+  .mobile-picker-fab span{
+    color:var(--muted);
+    font-family:var(--mono);
+    font-size:10px;
+    font-weight:500;
+  }
+
+  body.picker-open .mobile-picker-fab{
+    opacity:0;
+    pointer-events:none;
+  }
+}
+
+@media (max-width: 430px){
+  .picker{
+    height:88dvh;
+  }
+
+  .mobile-picker-fab{
+    width:calc(100vw - 28px);
+  }
+}
+
 </style>
 </head>
 <body>
@@ -200,6 +659,13 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
   <!-- PICKER SIDEBAR -->
   <div class="picker">
     <div class="picker-hdr">
+      <div class="picker-mobile-head">
+        <div class="picker-mobile-title">
+          <strong>Find channels</strong>
+          <span>Search, favourites, categories</span>
+        </div>
+        <button class="picker-close" onclick="closePickerOverlay()" aria-label="Close channel search">✕</button>
+      </div>
       <div class="picker-search">
         <span class="si">🔍</span>
         <input type="text" id="search" placeholder="Search channels, country…" oninput="onSearch(this.value)"/>
@@ -215,6 +681,9 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
   </div>
 
 </div>
+
+<div class="picker-backdrop" onclick="closePickerOverlay()" aria-hidden="true"></div>
+<button class="mobile-picker-fab" onclick="openPickerOverlay()" type="button">🔍 Channels <span id="mobile-picker-count">search</span></button>
 
 <!-- COUNTRY OVERLAY -->
 <div class="country-overlay" id="country-overlay">
@@ -321,6 +790,8 @@ async function init(){
 
     document.getElementById('ch-count').innerHTML =
       `<span class="live-dot"></span>${allChannels.length.toLocaleString()} channels`;
+    const mobileCount = document.getElementById('mobile-picker-count');
+    if(mobileCount) mobileCount.textContent = allChannels.length.toLocaleString();
 
     buildCats();
     renderPicker();
@@ -522,6 +993,7 @@ function assignChannel(chId){
 
   // Persist session
   saveSession();
+  if(isMobileView()) closePickerOverlay();
 }
 
 // ═══════════════════════════════════════════════════
@@ -632,6 +1104,23 @@ function toggleMaster(){
   btn.textContent = masterMuted ? '🔇' : '🔊';
   btn.classList.toggle('on', !masterMuted);
   syncMute();
+}
+
+
+// ═══════════════════════════════════════════════════
+// MOBILE PICKER OVERLAY
+// ═══════════════════════════════════════════════════
+function isMobileView(){
+  return window.matchMedia && window.matchMedia('(max-width: 760px)').matches;
+}
+
+function openPickerOverlay(){
+  document.body.classList.add('picker-open');
+  setTimeout(() => document.getElementById('search')?.focus(), 180);
+}
+
+function closePickerOverlay(){
+  document.body.classList.remove('picker-open');
 }
 
 // ═══════════════════════════════════════════════════
@@ -925,6 +1414,12 @@ document.getElementById('m3u-modal').addEventListener('click', e => {
 });
 document.getElementById('country-overlay').addEventListener('click', e => {
   if(e.target === document.getElementById('country-overlay')) closeCountryOverlay();
+});
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape') closePickerOverlay();
+});
+window.addEventListener('resize', () => {
+  if(!isMobileView()) closePickerOverlay();
 });
 </script>
 </body>
